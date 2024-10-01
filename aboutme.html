@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Blog | About Me</title>
+    <link rel="stylesheet" href="styles-aboutme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html"><span class="white-text"><b>louise</b></span><span class="blue-text">.</span></a>
+        </div>
+        <div class="nav-buttons">
+            <a href="aboutme.html"><button>About Me</button></a> <span class="large-letter"> |</span>
+            <a href="contacts.html"><button>Contacts</button></a> 
+        </div>
+    </nav>
+
+    <section id="about-section">
+        <div class="grid-container">
+            <div class="column-1">
+                <div class="slides">
+                    <div class="slide active"><img src="louise2.jpg" alt="Slide 1"></div>
+                    <div class="slide"><img src="louise.jpg" alt="Slide 2"></div>
+                    <div class="slide"><img src="louise3.jpg" alt="Slide 3"></div>
+                </div>
+            </div>
+            <div class="column-2">
+                <p>My name is <b>Nicole Loise T. Alejandro</b>, and I am currently a fourth-year nursing student at the University of Perpetual Help System Dalta, pursuing a Bachelor of Science in Nursing.
+                I have developed a keen interest in specializing in critical care settings, including the ICU, emergency department, and operating room.
+                <br><br>Throughout my studies, I have cultivated a strong passion for providing compassionate and high-quality care to patients in their most vulnerable moments. I believe that nursing is not just a profession but a calling to make a meaningful difference in the lives of others.
+                My philosophy centers on the importance of empathy, teamwork, and continuous learning, as I strive to enhance my skills and knowledge to better serve my future patients. I am excited about the journey ahead and the opportunities to grow as a healthcare professional.</p>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="row-span">
+                <div class="image-slider" id="imageSlider">
+                    <img src="training.jpg" alt="Training">
+                    <img src="training2.jpg" alt="Training 2">
+                    <img src="training3.jpg" alt="Training 3">
+                    <img src="training4.jpg" alt="Training 4">
+                    <img src="training5.jpg" alt="Training 5">
+                    <img src="training6.jpg" alt="Training 6">
+                    <img src="training7.jpg" alt="Training 7">
+                    <img src="training8.jpg" alt="Training 8">
+                    <img src="training9.jpg" alt="Training 9">
+                </div>
+            </div>
+            <div class="row-span1">
+                <p>My rotation in the operating room has been a significant experience in my nursing journey, allowing me to enhance my skills and deepen my understanding of patient care. Each surgical case is a unique learning opportunity, and I feel a profound sense of purpose when I’m in the OR, aspiring to become a doctor one day.
+
+                    <br><br>Throughout my duties, I have witnessed the full spectrum of life—from childbirth to pediatrics and geriatrics, all the way to end-of-life care in the ICU. These experiences have reinforced my commitment to holistic patient care and the fulfillment I gain from helping others.
+                    
+                    <br><br>Despite facing challenges and moments of burnout, I am driven by my passion for medicine and my desire to make a difference in people's lives. This journey is demanding, but the opportunity to care for others motivates me to strive for excellence as I work toward my goal of becoming a physician</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/nicoleloise.alejandro" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/aleeejuhhh/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:alejandronicoleloise@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2024 louise<span class="blue-text"><b> .</b></p>
+    </footer>
+
+    <!-- First Slideshow (Column 1) -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides .slide');
+        const totalSlides = slides.length;
+
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex = (slideIndex + 1) % totalSlides;
+            slides[slideIndex].classList.add('active');
+        }
+
+        showSlides();
+        setInterval(showSlides, 3000); // Slide change every 3 seconds
+    </script>
+
+    <script>
+        const slider = document.getElementById('imageSlider');
+        const images = Array.from(slider.getElementsByTagName('img'));
+
+        // Clone all images and append them to the slider for infinite scrolling
+        images.forEach(image => {
+            const clone = image.cloneNode(true);
+            slider.appendChild(clone);
+        });
+
+        // Calculate the total width of the images for animation
+        const totalImages = images.length * 2; // Total images is double for infinite scroll
+        const slideWidth = 100 / images.length; // Each image takes up 100% / number of images
+
+        // Update the keyframes for seamless transition
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slide {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${slideWidth * images.length}%) } /* Slide full width of all images */
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Pause on hover
+        slider.addEventListener('mouseover', () => {
+            slider.style.animationPlayState = 'paused';
+        });
+
+        slider.addEventListener('mouseout', () => {
+            slider.style.animationPlayState = 'running';
+        });
+    </script>
+
+</body>
+</html>
